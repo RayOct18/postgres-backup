@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ###########################
 ####### LOAD CONFIG #######
@@ -18,8 +18,7 @@ while [ $# -gt 0 ]; do
 done
 
 if [ -z $CONFIG_FILE_PATH ] ; then
-        SCRIPTPATH=$(cd ${0%/*} && pwd -P)
-        CONFIG_FILE_PATH="${SCRIPTPATH}/pg_backup.config"
+        CONFIG_FILE_PATH="/pg_backup.config"
 fi
 
 if [ ! -r ${CONFIG_FILE_PATH} ] ; then
@@ -52,6 +51,8 @@ if [ ! $USERNAME ]; then
 	USERNAME="postgres"
 fi;
 
+# Set the postgres password
+export PGPASSWORD=$PGPASSWORD
 
 ###########################
 #### START THE BACKUPS ####
