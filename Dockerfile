@@ -1,7 +1,7 @@
 ARG TAG
 FROM postgres:$TAG
 
-COPY ./*.sh *.config /
+COPY ./entrypoint.sh ./pg_* /
 RUN chmod +x /*.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]

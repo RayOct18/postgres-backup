@@ -5,4 +5,5 @@ services:
       CRON_TIME: "0 16 * * *"
     volumes:
       - backup:/backups
+      - pg_backup.config:/pg_backup.config:ro
     
