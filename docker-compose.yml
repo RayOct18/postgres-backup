@@ -1,0 +1,8 @@
+services:
+  db-backup:
+    image: postgres-backup:16.1-alpine
+    environment:
+      CRON_TIME: "0 16 * * *"
+    volumes:
+      - backup:/backups
+    
