@@ -25,6 +25,9 @@ fi;
 
 # Set the postgres password
 export PGPASSWORD=$PGPASSWORD
+if [ ! $PGPORT ]; then
+	export PGPORT=$PGPORT
+fi;
 
 ###########################
 #### START THE BACKUPS ####

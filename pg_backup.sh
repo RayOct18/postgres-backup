@@ -23,8 +23,11 @@ if [ ! $USERNAME ]; then
 	USERNAME="postgres"
 fi;
 
-# Set the postgres password
+# Set the postgres
 export PGPASSWORD=$PGPASSWORD
+if [ ! $PGPORT ]; then
+	export PGPORT=$PGPORT
+fi;
 
 ###########################
 #### START THE BACKUPS ####
