@@ -3,7 +3,13 @@ services:
     image: postgres-backup:16.1-alpine
     environment:
       CRON_TIME: "0 16 * * *"
+      HOSTNAME: localhost
+      PGPASSWORD: example
+      BACKUP_DIR: /backups/
+      SCHEMA_ONLY_LIST: ""
+      ENABLE_PLAIN_BACKUPS: yes
+      ENABLE_GLOBALS_BACKUPS: yes
+      WEEKS_TO_KEEP: 1
     volumes:
       - backup:/backups
-      - pg_backup.config:/pg_backup.config:ro
     

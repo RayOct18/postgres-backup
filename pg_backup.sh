@@ -1,32 +1,6 @@
 #!/bin/sh
 
 ###########################
-####### LOAD CONFIG #######
-###########################
-
-while [ $# -gt 0 ]; do
-        case $1 in
-                -c)
-                        if [ -r "$2" ]; then
-                                source "$2"
-                                shift 2
-                        else
-                                ${ECHO} "Unreadable config file \"$2\"" 1>&2
-                                exit 1
-                        fi
-                        ;;
-                *)
-                        ${ECHO} "Unknown Option \"$1\"" 1>&2
-                        exit 2
-                        ;;
-        esac
-done
-
-if [ $# = 0 ]; then
-        source /pg_backup.config
-fi;
-
-###########################
 #### PRE-BACKUP CHECKS ####
 ###########################
 

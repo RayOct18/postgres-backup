@@ -4,12 +4,12 @@
 You need to setup `pg_backup.config` first.
 ### Backup
 ```bash
-docker run --rm --network host -v $(pwd)/pg_backup.config:/pg_backup.config -v $(pwd)/backups:/backups postgres-backup:16.1-alpine /pg_backup.sh
+docker run --rm --network host --env-file pg_backup.config -v $(pwd)/pg_backup.config:/pg_backup.config -v $(pwd)/backups:/backups postgres-backup:16.1-alpine /pg_backup.sh
 ```
 
 ### Rotate Backup
 ```bash
-docker run --rm --network host -e CRON_TIME="00 16 * * *" -v $(pwd)/pg_backup.config:/pg_backup.config -v $(pwd)/backups:/backups postgres-backup:16.1-alpine
+docker run --rm --network host --env-file pg_backup.config -e CRON_TIME="00 16 * * *" -v $(pwd)/pg_backup.config:/pg_backup.config -v $(pwd)/backups:/backups postgres-backup:16.1-alpine
 ```
 
 ## Build Docker Image
